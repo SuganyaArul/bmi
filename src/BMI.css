@@ -1,0 +1,112 @@
+#BMIh2{
+    
+    background-color: #8400b8;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    margin: 0em;
+    color: #FFF;
+    font-size: 2em;
+}
+
+.BMIheader{
+    text-align:"margin-left: 0px; margin-right: 0px;"
+   
+}
+.head{
+    border: 0.5em solid #005eb8;
+    background-color: #FFF;
+}
+.small{
+    background-color: #8400b8;
+    margin: auto;
+    color: #FFF;
+    font-size: 1.6em; 
+    display: inline-block;
+    width: calc(50% - 0.3em);
+    padding: 0.3em 0em 0.2em 0em;
+    border-radius: 0.5em 0.5em 0em 0em;
+    border-bottom: none;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.6em;  
+}
+.buttondisplay{
+    right: 0px;
+    top: 0em;
+    font-size: 1.2em;
+    color: #005EB8 !important;
+    background-color: transparent !important;
+    text-decoration: underline;
+    float:right;
+}
+.label{
+    margin: 0em 2em 0.625em 0em;
+}
+.label1{
+    margin:50px
+}
+.wrap{
+    padding-bottom: 2em;
+    display:flex;
+    flex-direction: row;
+    width:50px;
+}
+.side{
+    display:flex;
+    flex-direction: row;
+}
+.colum{
+    float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+.full{
+    width:60%;
+    float:center;
+    margin:auto;
+    background-color: plum;
+    padding: 1rem;
+}
+.size{
+    position: static;
+}
+
+.disable{
+    display: none;
+}
+.input{
+    margin: 0em;
+    border-radius: 8px;
+    border: 0.1em solid #4C6272;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    padding: 0.1em;
+    width: 30%;
+    background-repeat: repeat-x;
+    background-position: top center;
+    background-size: 100% 60px;
+}
+.container{
+    background-color: rgb(140, 176, 213);
+    border-radius: 15px;
+    padding: 1rem;
+}
+p{
+    font-size: larger;
+
+}
+h4{
+    font-size: larger;
+}
+
+input[type=button]{
+    border-radius: 15px;
+	background-color: #8400b8;
+	color:white;
+	width:100px;
+    height:50px;
+	margin:10px;
+}
+input[type=button]:hover{
+    background-color: orange;
+}
