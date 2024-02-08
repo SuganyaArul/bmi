@@ -10,7 +10,8 @@ function BMI({setResult,setChildResult}){
     const [inputs, setInputs] = useState("");
     const [height, setHeight] = useState('feet');
     const [weight, setWeight] = useState('pounds');
-    const [bmiFor, setBmiFor] = useState('Adult')
+    const [bmiFor, setBmiFor] = useState('Adult');
+    const [sex, setSex] = useState('Female')
     const navigate = useNavigate();
     const handleChange=(event)=>{
         const name = event.target.name;
@@ -38,12 +39,15 @@ function BMI({setResult,setChildResult}){
         const multiplier = Math.pow(10, 1);
         const bmi = Math.round(bm * multiplier) / multiplier;
         setResult(bmi)
-        console.log(bmi)
-        if(! isNaN(bmi))
-        navigate("/Result");
+
+        if(! isNaN(bmi)){
+            if(bmiFor==='Adult')
+           navigate("/Result");
+            else
+            navigate("/child_result")
+        }
       };
       function changeTab(e){
-        console.log(e.target.name);
         setBmiFor(e.target.name)
       }
       
@@ -60,7 +64,7 @@ return(
             <button className='small' name='Adult' onClick={changeTab}>Adult</button>
             <button className='small' name='Child' onClick={changeTab}>Child</button>
         </div>
-        {bmiFor ==='Adult'?(
+        
             <>
             <h4>Height</h4>
             <button className='buttondisplay' onClick={()=>{height === 'feet'?setHeight('cm'):setHeight('feet')}} >Switch to {height ==='feet'?'cm' :'feet'}</button>
@@ -79,7 +83,7 @@ return(
         (<div>
             <p>Centimeters
             </p>
-            <input type='number' name='cm' className='input' onChange={handleChange} value={inputs.cm || ""}/>
+            <input type='number' name='cm' placeholder='cm' className='input' onChange={handleChange} value={inputs.cm || ""}/>
         </div>)
     }
         <hr/>
@@ -104,24 +108,32 @@ return(
         )
         }
         <hr/>
+        {bmiFor ==='Adult'?
         <div className='size'>
             <h4>Age</h4>
             <input type='number' name='age' placeholder='Age' className='input' onChange={handleChange} value={inputs.age || ""}></input>
+        </div>:
+        <div >
+        <h4>Date Of Birth</h4>
+        <div>
+        <input type='date' placeholder='date of birth' name='date'/>
         </div>
+    </div>
+        }
         <hr/>
         <div>
             <h4>Sex</h4>
             <p>
-            <input type='radio' value='Male' placeholder='Male'/>Male
-            <input type='radio' value='Female' placeholder='Female' defaultChecked={true}/>Female
+            <input type='radio' value='Male' placeholder='Male' checked={sex==='Male'} onClick={()=>{setSex('Male')}}/>Male
+            <input type='radio' value='Female' placeholder='Female' checked={sex==='Female'} onClick={()=>{setSex('Female')}}/>Female
             </p>
         </div>
          <input type='button' value='Calculate' onClick={handleSubmit}/> 
         <input type='button' value='Reset' onClick={()=>{setInputs('')}} />
         </>
-        ):(
+        {/* ):(
             <ChildBMI setChildResult={setChildResult}/>
-        )}
+        )} */}
     </form>
     
 )

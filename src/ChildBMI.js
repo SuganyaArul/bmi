@@ -3,8 +3,9 @@ import { useState } from 'react'
 
 export default function ChildBMI({setChildResult}){
     const [childInputs, setChildInputs] = useState("");
-    const [height, setHeight] = useState('feet');
+    const [height, setHeight] = useState('feet1');
     const [weight, setWeight] = useState('pounds');
+    const [sex, setSex] = useState('Female1')
     const navigate = useNavigate();
     const handleChange=(event)=>{
         const name = event.target.name;
@@ -17,7 +18,7 @@ export default function ChildBMI({setChildResult}){
         // Prevent the browser from reloading the page
         e.preventDefault();
         let meter;
-        if(height==='feet'){
+        if(height==='feet1'){
          meter=(Number(childInputs.feet)+Number(childInputs.inches || 0)*0.1)*0.3048;
         }else{
             meter=(Number(childInputs.cm)*0.01)
@@ -32,17 +33,16 @@ export default function ChildBMI({setChildResult}){
         const multiplier = Math.pow(10, 1);
         const bmi = Math.round(bm * multiplier) / multiplier;
         setChildResult(bmi)
-        console.log(bmi)
         if(! isNaN(bmi))
-        navigate("/Result");
+        navigate("/child_result");
       };
     return (
         <form onSubmit={handleSubmit}>
         <div>
             <h4>Height</h4>
-            <button className='buttondisplay' onClick={()=>{height === 'feet'?setHeight('cm'):setHeight('feet')}} >Switch to {height ==='feet'?'cm' :'feet'}</button>
+            <button className='buttondisplay' onClick={()=>{height === 'feet1'?setHeight('cm1'):setHeight('feet1')}} >Switch to {height ==='feet1'?'cm' :'feet'}</button>
         </div>
-        { height ==='feet'?
+        { height ==='feet1'?
         (<div className='cm' placeholder='cm'> 
             <div className='column'>
             <p>Feet</p>
@@ -56,7 +56,7 @@ export default function ChildBMI({setChildResult}){
         (<div>
             <p>Centimeters
             </p>
-            <input type='number' name='cm' className='input' onChange={handleChange} value={childInputs.cm || ""}/>
+            <input type='number' name='cm' placeholder='cm' className='input' onChange={handleChange} value={childInputs.cm || ""}/>
         </div>)
     }
         <hr/>
@@ -91,8 +91,8 @@ export default function ChildBMI({setChildResult}){
         <div>
             <h4>Sex</h4>
             <p>
-            <input type='radio' value='Male' placeholder='Male'/>Male
-            <input type='radio' value='Female' placeholder='Female' defaultChecked={true}/>Female
+            <input type='radio' value='Male' placeholder='Male' checked={sex==='Male1'} onClick={()=>{setSex('Male1')}}/>Male
+            <input type='radio' value='Female' placeholder='Female' checked={sex==='Female1'} onClick={()=>{setSex('Female1')}}/>Female
             </p>
         </div>
          <input type='button' value='Calculate' onClick={handleSubmit}/> 
